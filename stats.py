@@ -14,7 +14,7 @@ def letter_count(text):
 def ordered_letter_count(text):
     count = []
     for c,n in letter_count(text).items():
-        count.append((c,n))
-    count.sort(key = lambda x: x[1], reverse = True)
+        count.append({"char": c, "num": n})
+    count.sort(key = lambda x: x["num"], reverse = True)
     return count
 

@@ -1,24 +1,19 @@
-from stats import word_count, letter_count
-
-def main1():
-    path ="books/frankenstein.txt"
-    with open(path) as f:
-        file_contents = f.read()
-    print(f"{word_count(file_contents)} words found in the document")
-    print(letter_count(file_contents))
+from stats import word_count, ordered_letter_count
 
 def main():
     path ="books/frankenstein.txt"
     with open(path) as f:
         file_contents = f.read()
 
-    print(f"--- Begin report of {path} ---")
-    print(f"{word_count(file_contents)} words found in the document")
-    print()
-    for c,n in ordered_letter_count(file_contents):
-        if c.isalpha():
-            print(f"The '{c}' character was found {n} times")
-    print(f"--- End report ---")
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {path}...")
+    print("----------- Word Count ----------")
+    print(f"Found {word_count(file_contents)} total words")
+    print("--------- Character Count -------")
+    for lc in ordered_letter_count(file_contents):
+        if lc["char"].isalpha():
+            print(f"{lc["char"]}: {lc["num"]}")
+    print("============= END ===============")
 
 
-main1()
+main()
